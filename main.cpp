@@ -85,10 +85,27 @@ void mostrarAprobados(Estudiante* raiz) {
         mostrarAprobados(raiz->derecho);
     }
 }
+
+
+//=============== CODIGO FER =========================
+
+
 // 5. Mostrar estudiantes reprobados (nota < 6.0)
-void mostrarReprobados(Estudiante* raiz) {
- // Tu código aquí
+void mostrarReprobados(Estudiante *raiz)
+{
+    if (raiz != NULL)
+    {
+        mostrarReprobados(raiz->izquierdo);
+
+        if (raiz->nota < 6.0)
+        {
+            cout << "Carnet: " << raiz->carnet << " Nombre: " << raiz->nombre << " Nota: " << raiz->nota << "\n";
+        }
+
+        mostrarReprobados(raiz->derecho);
+    }
 }
+
 // 6. Calcular el promedio de todas las notasArboles binarios 5
 float calcularPromedio(Estudiante* raiz, int* contador) {
  // Tu código aquí
