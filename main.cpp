@@ -107,10 +107,24 @@ void mostrarReprobados(Estudiante *raiz)
 }
 
 // 6. Calcular el promedio de todas las notasArboles binarios 5
-float calcularPromedio(Estudiante* raiz, int* contador) {
- // Tu código aquí
- // Usa el contador para saber cuántos estudiantes hay
+float calcularPromedio(Estudiante *raiz, int *contador)
+{
+    if (raiz == NULL)
+    {
+        return 0;
+    }
+
+    float suma = raiz->nota;
+    (*contador) ++;
+
+    suma += calcularPromedio(raiz->izquierdo, contador);
+    suma += calcularPromedio(raiz->derecho, contador);
+
+    return suma;
+
+    // Usa el contador para saber cuántos estudiantes hay
 }
+
 // 7. Encontrar al estudiante con la nota más alta
 Estudiante* encontrarMejorNota(Estudiante* raiz) {
  // Tu código aquí
