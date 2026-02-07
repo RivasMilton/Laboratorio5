@@ -47,9 +47,19 @@ Estudiante* insertar(Estudiante* raiz, int carnet, char nombre[], float nota) {
     // Retornar la raíz sin cambios
     return raiz;
 }
-// 2. Mostrar todos los estudiantes en orden de carnet
 void mostrarEstudiantes(Estudiante* raiz) {
- // Tu código aquí
+    if (raiz != NULL) {
+        // Recorrer subárbol izquierdo
+        mostrarEstudiantes(raiz->izquierdo);
+
+        // Mostrar datos del estudiante
+        cout << "Carnet: " << raiz->carnet
+             << " Nombre: " << raiz->nombre
+             << " Nota: " << raiz->nota << endl;
+
+        // Recorrer subárbol derecho
+        mostrarEstudiantes(raiz->derecho);
+    }
 }
 // 3. Buscar un estudiante por carnet y mostrar sus datos
 void buscarEstudiante(Estudiante* raiz, int carnet) {
