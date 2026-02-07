@@ -149,6 +149,68 @@ Estudiante *encontrarMejorNota(Estudiante *raiz)
     return mejor;
 }
 
+//MENU COMO EL QUE HIZO ELIAS EN UNA DISCUSION ===========================================
+void menuMostrar(Estudiante* ecampus) {
+    int opcion;
+
+    if (ecampus == NULL) {
+        cout << "El arbol esta vacio, agrega estudiantes primero bro\n";
+        return;
+    }
+
+    do {
+        cout << "\n====== MENU MOSTRAR =====\n";
+        cout << "1. Mostrar todos\n";
+        cout << "2. Mostrar aprobados\n";
+        cout << "3. Mostrar reprobados\n";
+        cout << "4. Mostrar mejor nota\n";
+        cout << "5. Mostrar promedio\n";
+        cout << "0. Volver\n";
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "\n||===== MENU MOSTRAR ESTUDIANTES =====||\n";
+                mostrarEstudiantes(ecampus);
+                cout << "||====================================||\n";
+                break;
+
+            case 2:
+                cout << "\n||===== MENU MOSTRAR APROBADOS =====||\n";
+                mostrarAprobados(ecampus);
+                cout << "||====================================||\n";
+                break;
+
+            case 3:
+                cout << "\n||===== MENU MOSTRAR REPROBADOS =====||\n";
+                mostrarReprobados(ecampus);
+                cout << "||====================================||\n";
+                break;
+
+            case 4: {
+                Estudiante* mejor = encontrarMejorNota(ecampus);
+                cout << "\n||===== MENU MOSTRAR MEJOR ESTUDIANTE =====||\n";
+                cout << "Mejor estudiante:\n";
+                cout << "Carnet: " << mejor->carnet << " | Nombre: " << mejor->nombre << " | Nota: " << mejor->nota << "\n";
+                cout << "||====================================||\n";
+                break;
+            }
+
+            case 5: {
+                cout << "\n||===== MENU MOSTRAR PROMEDIOS DE ESTUDIANTES =====||\n";
+                int contador = 0;
+                float suma = calcularPromedio(ecampus, &contador);
+                cout << "Promedio general: " << suma / contador << "\n";
+                cout << "||====================================||\n";
+                break;
+            }
+        }
+
+    } while (opcion != 0);
+}
+
+
 int main() {
  Estudiante* sistema = NULL;
  int opcion;
