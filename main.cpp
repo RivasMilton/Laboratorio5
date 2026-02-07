@@ -9,22 +9,24 @@ struct Estudiante {
 };
 // Función para crear un nuevo estudiante
 Estudiante* crearEstudiante(int carnet, char nom[], float nota) {
- Estudiante* nuevo = new Estudiante();
- nuevo->carnet = carnet;
- nuevo->nota = nota;
- nuevo->izquierdo = NULL;
- nuevo->derecho = NULL;
+    Estudiante* nuevo = new Estudiante();
+    nuevo->carnet = carnet;
+    nuevo->nota = nota;
+    nuevo->izquierdo = NULL;
+    nuevo->derecho = NULL;
 
- // Copiar el nombre
- int i = 0;
- while(nom[i] != '\0' && i < 49) { Arboles binarios 4
- nuevo->nombre[i] = nom[i];
- i++;
- }
- nuevo->nombre[i] = '\0';
+    // Copiar el nombre
+    int i = 0;
+    while(nom[i] != '\0' && i < 49) {
+        nuevo->nombre[i] = nom[i];
+        i++;
+    }
+    nuevo->nombre[i] = '\0';
 
- return nuevo;
+    return nuevo;
 }
+
+
 // TODO: Implementar estas funciones
 // 1. Insertar un estudiante en el árbol (ordenado por carnet)
 Estudiante* insertar(Estudiante* raiz, int carnet, char nombre[], float nota) {
