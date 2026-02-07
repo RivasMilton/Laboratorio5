@@ -61,9 +61,28 @@ void mostrarEstudiantes(Estudiante* raiz) {
         mostrarEstudiantes(raiz->derecho);
     }
 }
-// 3. Buscar un estudiante por carnet y mostrar sus datos
 void buscarEstudiante(Estudiante* raiz, int carnet) {
- // Tu código aquí
+    // Si el árbol está vacío o no se encontró
+    if (raiz == NULL) {
+        cout << "Estudiante no encontrado." << endl;
+        return;
+    }
+
+    // Si se encuentra el carnet
+    if (carnet == raiz->carnet) {
+        cout << "Estudiante encontrado:" << endl;
+        cout << "Carnet: " << raiz->carnet
+             << " Nombre: " << raiz->nombre
+             << " Nota: " << raiz->nota << endl;
+    }
+    // Buscar en subárbol izquierdo
+    else if (carnet < raiz->carnet) {
+        buscarEstudiante(raiz->izquierdo, carnet);
+    }
+    // Buscar en subárbol derecho
+    else {
+        buscarEstudiante(raiz->derecho, carnet);
+    }
 }
 // 4. Mostrar estudiantes aprobados (nota >= 6.0)
 void mostrarAprobados(Estudiante* raiz) {
