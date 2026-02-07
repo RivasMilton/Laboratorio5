@@ -210,27 +210,69 @@ void menuMostrar(Estudiante* ecampus) {
     } while (opcion != 0);
 }
 
+// ================= MENU PRINCIPAL =================
+void menu() {
+    Estudiante* ecampus = NULL;
+    int opcion;
 
-int main() {
- Estudiante* sistema = NULL;
- int opcion;
+    do {
+        cout << "\n===== MENU PRINCIPAL =====\n";
+        cout << "1. Agregar estudiante\n";
+        cout << "2. Buscar estudiante\n";
+        cout << "3. Mostrar\n";
+        cout << "0. Salir\n";
+        cout << "Opcion: ";
+        cin >> opcion;
 
- do {
- cout << "\n===== SISTEMA DE GESTION DE ESTUDIANTES=====\n";
- cout << "1. Agregar estudiante\n";
- cout << "2. Mostrar todos los estudiantes\n";
- cout << "3. Buscar estudiante por carnet\n";
- cout << "4. Mostrar estudiantes aprobados\n";
- cout << "5. Mostrar estudiantes reprobados\n";
- cout << "6. Calcular promedio general\n";
- cout << "7. Mostrar estudiante con mejor nota\n";
- cout << "8. Salir\n";
- cout << "Opcion: ";
- cin >> opcion;
+        switch (opcion) {
+            case 1: {
+                cout << "\n||===== MENU INSERTAR ESTUDIANTE =====||\n";
+                int carnet;
+                char nombre[50];
+                float nota;
 
- // Implementa el switch con las opciones
+                cout << "Carnet: ";
+                cin >> carnet;
 
- } while(opcion != 8);
+                cin.ignore();
+                cout << "Nombre: ";
+                cin.getline(nombre, 50);
 
- return 0;
+                cout << "Nota: ";
+                cin >> nota;
+
+                ecampus = insertar(ecampus, carnet, nombre, nota);
+                cout << "||====================================||\n";
+                break;
+            }
+
+            case 2:
+                cout << "\n||===== MENU BUSCAR ESTUDIANTE =====||\n";
+                if (ecampus == NULL)
+                    cout << "El arbol esta vacio.\n";
+                else {
+                    int carnet;
+                    cout << "Carnet a buscar: ";
+                    cin >> carnet;
+                    buscarEstudiante(ecampus, carnet);
+                }
+                cout << "||====================================||\n";
+                break;
+
+            case 3:
+                menuMostrar(ecampus);
+                break;
+
+            case 0:
+                cout << "Saliendo...\n";
+                break;
+        }
+
+    } while (opcion != 0);
+}
+
+int main()
+{
+    menu();
+    return 0;
 }
